@@ -1,3 +1,27 @@
-<p>
-  listarVehiculo works!
-</p>
+<div class="row">
+  <div class="col-6">
+    <table class="table">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Marca</th>
+          <th scope="col">Linea</th>
+          <th scope="col">Modelo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vehiculo of vehiculos">
+          <th scope="row">{{vehiculo.id}}</th>
+          <td>{{vehiculo.marca}}</td>
+          <td>{{vehiculo.linea}}</td>
+          <td>{{vehiculo.modelo}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-6">
+    <p class="p-0 m-0" *ngFor="let marca of numeroMarcas"> {{marca.marca}}: {{marca.numero}}</p>
+  </div>
+</div>
