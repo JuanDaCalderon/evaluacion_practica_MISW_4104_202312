@@ -13,24 +13,28 @@ export class ListarVehiculoComponent implements OnInit {
   constructor(private vehiculoService: VehiculosService) {
     this.vehiculoService.getVehiculos().subscribe((vehiculo) => {
       this.vehiculos = [...vehiculo];
-      const marcasTotal: any = {};
-      vehiculo
-        .map((vehiculo) => vehiculo.marca)
-        .forEach((marca) => {
-          marcasTotal[marca] = !marcasTotal[marca]
-            ? 1
-            : (marcasTotal[marca] += 1);
-        });
-      const marcasArray: any[] = [];
-      for (const marca in marcasTotal) {
-        marcasArray.push({
-          marca: marca,
-          numero: marcasTotal[marca],
-        });
-      }
-      this.numeroMarcas = [...marcasArray];
+      this.numeroMarcas = [...this.getNumeroMarcas(vehiculo)];
     });
   }
 
   ngOnInit() {}
+
+  public getNumeroMarcas(vehiculos: Vehiculo[]): any[] {
+    const marcasTotal: any = {};
+    vehiculos
+      .map((vehiculo) => vehiculo.marca)
+      .forEach((marca) => {
+        marcasTotal[marca] = !marcasTotal[marca]
+          ? 1
+          : (marcasTotal[marca] += 1);
+      });
+    const marcasArray: any[] = [];
+    for (const marca in marcasTotal) {
+      marcasArray.push({
+        marca: marca,
+        numero: marcasTotal[marca],
+      });
+    }
+    return marcasArray;
+  }
 }

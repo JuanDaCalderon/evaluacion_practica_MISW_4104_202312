@@ -2,13 +2,15 @@ import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { VehiculosModule } from './vehiculos/vehiculos.module';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        VehiculosModule
+        VehiculosModule,
+        HttpClientModule
       ],
       declarations: [
         AppComponent
